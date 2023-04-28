@@ -6,7 +6,7 @@ function [Adj] = get_adjacency_matrix (Labyrinth)
    [rows, cols] = size(Labyrinth);
   dim = rows * cols + 2; 
   Adj = zeros(dim);
-  %Adj = sparse(Adj);
+  Adj = sparse(Adj);
   a = 0;
   contor = 1;
   Adj(dim -1, dim -1) = 1;
@@ -21,31 +21,28 @@ function [Adj] = get_adjacency_matrix (Labyrinth)
           Adj(contor, dim) = 1;
         endif
       endif
-      if rem(Labyrinth(i,j), 4) < 1
+      if rem(Labyrinth(i,j), 4) < 2
         if (j != cols)
          Adj(contor, contor + 1) = 1;
          Adj(contor + 1, contor) = 1;
         else
-          if rem(contor, cols) == 0
          Adj(contor, dim) = 1;
-         endif
         endif
       endif
       if rem(Labyrinth(i,j), 8) < 4
-        if (i != 1)
-          Adj(contor - rows, contor) = 1;
-          Adj(contor, contor - rows) = 1; 
+        if (i != rows)
+          Adj(contor + rows, contor) = 1;
+          Adj(contor, contor + rows) = 1; 
         else
           contor
           Adj(contor, dim - 1) = 1; 
           endif
         endif
       if rem(Labyrinth(i,j), 16) < 8
-        if (i != rows)
-          Adj(contor + rows, contor) = 1;
-          Adj(contor, contor + rows) = 1;
+        if (i != 1)
+          Adj(contor - rows, contor) = 1;
+          Adj(contor, contor - rows) = 1;
         else
-          contor
           Adj(contor, dim - 1) =  1;
         endif
       endif
