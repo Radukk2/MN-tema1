@@ -31,8 +31,8 @@ function [Adj] = get_adjacency_matrix (Labyrinth)
       endif
       if rem(Labyrinth(i,j), 8) < 4
         if (i != rows)
-          Adj(contor + rows, contor) = 1;
-          Adj(contor, contor + rows) = 1; 
+          Adj(contor + cols, contor) = 1;
+          Adj(contor, contor + cols) = 1; 
         else
           contor
           Adj(contor, dim - 1) = 1; 
@@ -40,8 +40,8 @@ function [Adj] = get_adjacency_matrix (Labyrinth)
         endif
       if rem(Labyrinth(i,j), 16) < 8
         if (i != 1)
-          Adj(contor - rows, contor) = 1;
-          Adj(contor, contor - rows) = 1;
+          Adj(contor - cols, contor) = 1;
+          Adj(contor, contor - cols) = 1;
         else
           Adj(contor, dim - 1) =  1;
         endif
