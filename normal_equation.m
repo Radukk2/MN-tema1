@@ -9,19 +9,26 @@ function [Theta] = normal_equation(FeatureMatrix, Y, tol, iter)
   
   % TODO: normal_equation implementation
   [rows, cols] = size(FeatureMatrix);
+  A = transpose(FeatureMatrix) * FeatureMatrix;
+  Theta = zeros(cols + 1,1);
+  eigvals = eig(A);
+  if !all(eigvals > 0)
+    Theta;
+    return;
+  endif
   x = zeros(cols,1);
-  r = Y - FeatureMatrix * x;
+  b = transpose(FeatureMatrix) * Y;
+  r = b - A * x;
   nr_iter = 1;
   v = r;
   tol = tol ^ 2;
-  transpose(v) * FeatureMatrix;
   while nr_iter < iter && transpose(r) * r > tol
-    t = (transpose(r) * r) / (transpose(v) * FeatureMatrix * v);
+    t = (transpose(r) * r) / (transpose(v) * A * v);
     x = x + t * v;
-    r = r - t * FeatureMatrix * v;
-    s = (transpose(r) * r)/ (t * transpose(v) * FeatureMatrix * v);
+    r = r - t * A * v;
+    s = (transpose(r) * r)/ (t * transpose(v) * A * v);
     v = r + s * v;
     nr_iter++;
   endwhile
-  Theta = x;
+  Theta = [0;x];
 endfunction

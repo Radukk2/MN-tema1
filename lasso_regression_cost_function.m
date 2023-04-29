@@ -8,10 +8,7 @@ function [Error] = lasso_regression_cost_function(Theta, Y, FeatureMatrix, lambd
   % Error -> the error of the regularized cost function
 
   % TODO: lasso_regression_cost_function implementation
-  Theta(1) = [];
-  Vect = FeatureMatrix * Theta;
-  Error = sum((Y - Vect).^2);
-  Error = Error /(length(Y));
-  lambda = norm(Theta, 1);
-  Error = Error + lambda;
+  Error = 2 * linear_regression_cost_function(Theta, Y, FeatureMatrix);
+  x = sum(abs(Theta)) * lambda;
+  Error = Error + x;
 endfunction
