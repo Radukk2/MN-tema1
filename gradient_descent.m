@@ -15,11 +15,12 @@ function [Theta] = gradient_descent(FeatureMatrix, Y, n, m, alpha, iter)
     Vect = FeatureMatrix * Theta;
     for j=1:n
       for i=1:m
-      sum(j,1) += (Vect(i,1) - Y(i,1)).^2 * FeatureMatrix(i,j);
+      sum(j,1) += ((Vect(i,1) - Y(i,1)).^2) .* FeatureMatrix(i,j);
     endfor
     sum(j,1) = sum(j,1) / m;
     Theta(j,1) = Theta(j,1) - alpha * sum(j,1);
   endfor
-  %Theta = Theta - alpha * sum;
-  endfor
+  Theta = Theta - alpha * sum;
+endfor
+Theta = [0; Theta];
 endfunction

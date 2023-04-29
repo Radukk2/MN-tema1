@@ -8,4 +8,6 @@ function [Theta] = normal_equation(FeatureMatrix, Y, tol, iter)
   % Theta -> the vector of weights
   
   % TODO: normal_equation implementation
+  nr_iter = 1;
+  
 endfunction

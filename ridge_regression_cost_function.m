@@ -6,6 +6,6 @@ function [Error] = ridge_regression_cost_function(Theta, Y, FeatureMatrix, lambd
   %           shrinkage applied to the regression coefficients
 
   % Error -> the error of the regularized cost function
-
-  % TODO: ridge_regression_cost_function implementation
+  new_lambda = lambda * sum(Theta(1:length(Theta),1).^2);
+  Error = linear_regression_cost_function(Theta, Y, FeatureMatrix) + new_lambda;
 endfunction
