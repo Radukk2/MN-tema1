@@ -8,7 +8,6 @@ function [Theta] = gradient_descent(FeatureMatrix, Y, n, m, alpha, iter)
 
   % Theta -> the vector of weights
 
-  % TODO: gradient_descent implementation
   Theta = zeros(n,1);
   sum = zeros(n,1);
   for nr=1:iter
