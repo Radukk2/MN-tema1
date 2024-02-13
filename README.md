@@ -26,6 +26,4 @@ Pentru ficare problema voi descrie functiile
 	-split_dataset se impart matricea X si vectorul y in setul de antrenare si cel de testare
 	-initialize weights face o matrice cu valori la intamplare din intervalul dat
 	-cost_function calculeaza Theta1, Theta2 reformand matricea de params(weights), apoi facem forward propagation creeand a1, a2, a3, z2, z3. Apoi se calculeaza suma costurilor(J). Se calculeaza apoi eroriel 2 si 3, delta1 si delta2, si apoi se calucleaza gradientul
-	-ultima functie face forward propagation si dupa ia valorile maxime
-	
-*1 Ar trebui sa am 97 de puncte fara readme. Daca se dau aceste puncte pe vmchecker nu mai solicit corectare manuala
+	-ultima functie face forward propagation si dupa ia valorile m
